@@ -2,21 +2,16 @@
 
 [openapi-to-graphql](https://github.com/IBM/openapi-to-graphql) translates APIs described by OpenAPI Specifications (OAS) or Swagger into GraphQL. This server uses that package as a dependency to convert OAS to GraphQL.
 
-## Deploy with Glitch
+### Deploy as AWS Lambda function
 
-1. Click the following button to edit on glitch
+Create a lambda function in AWS. This will be our webhook.
 
-   [![glitch-deploy-button](https://raw.githubusercontent.com/hasura/graphql-engine/master/community/boilerplates/auth-webhooks/nodejs-express/assets/deploy-glitch.png)](http://glitch.com/edit/#!/import/github/praveenweb/openapi-swagger-remote-schema)
+1. In this folder, run `npm install`
+2. Then create a zip: `zip -r openapi-to-graphql.zip .`
+3. Create a Lambda function.
+4. Select Node.js 8.10 as the runtime.
+5. Select "start from scratch".
+6. Add API gateway as a trigger.
+7. Add an API to API gateway.
+8. Upload the zip from previous step. The handler function of your lambda will be `index.handler`.
 
-2. Change the OpenAPI spec in the `openapi.json` file, as necessary.
-
-## Adding OpenAPI/Swagger as Remote Schema
-
-To be able to query OpenAPI/Swagger data via Hasura, it needs to be added as a Remote Schema using the Hasura Console.
-
-## Running Locally
-
-```bash
-npm install
-PORT=3000 npm start
-```
