@@ -2,8 +2,13 @@
 
 ## Setup
 
-`Dockerfile.combined-spring` = Java Spring app with a sample REST endpoint at `/greeting` and sample GraphQL schema with a `sayHello($name: String!)` query
+- Edit / Add java code in `spring-graal-gql-demo`
 
-- `docker compose up`
-- Java app should now be available on port `8081`
-    - Hasura for Java app should be available on port `8060`
+- Build the dockerfile: `docker build -t logical-fields-java .`
+- Run Hasura: `docker-compose up`
+
+- Add the Java remote fields:
+  - Head to Remote Schemas > Add Schema 
+  - The remote schema URL is: `http://localhost:8081/graphql`
+
+- Test it out via the Hasura GraphQL API or by adding remote fields
